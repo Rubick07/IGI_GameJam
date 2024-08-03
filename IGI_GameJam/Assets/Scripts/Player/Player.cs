@@ -86,14 +86,21 @@ public class Player : MonoBehaviour
         MaxEnergy = stats.EnergyBar;
         EnergyRegen = stats.EnergyRegeneration;
 
+        HeadHuntercdTemp = HeadHuntercd;
+        BulletEnergycdTemp = BulletEnergycd;
+        UltimatecdTemp = Ultimatecd;
+
+        dashingCooldown = 0;
+        BulletEnergycd = 0;
+        HeadHuntercd = 0;
+        Ultimatecd = 0;
+
+
         Healthbar.SetMax(stats.HP);
         EnergyBar.SetMax(stats.EnergyBar);
 
         rb = GetComponent<Rigidbody2D>();
         trail = GetComponent<TrailRenderer>();
-        HeadHuntercdTemp = HeadHuntercd;
-        BulletEnergycdTemp = BulletEnergycd;
-        UltimatecdTemp = Ultimatecd;
         InvokeRepeating("PassiveEnergy", 0, 1f);
     }
 
@@ -255,6 +262,7 @@ public class Player : MonoBehaviour
 
     public void Skill()
     {
+        Debug.Log("Skill");
        IsShooting = true;
        speed = 0;
        if(stance == Stance.Melee && CanEnergyStrike && CheckEnergy(BulletEnergyCost))
@@ -271,6 +279,7 @@ public class Player : MonoBehaviour
 
     private void EnergyStrikeBullet()
     {
+        Debug.Log(BulletEnergy);
         ShootBullet(BulletEnergy);
         MinusEnergy(BulletEnergyCost);
         CanEnergyStrike = false;

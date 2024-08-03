@@ -10,10 +10,11 @@ public class EnemyDrone : Enemy
     public GameObject Gun;
     float AttackCdTemp;
     Player player1;
-
+    Animator anim;
     private void Start()
     {
         player1 = FindObjectOfType<Player>().GetComponent<Player>();
+        anim = GetComponent<Animator>();
         AttackCdTemp = AttackCd;
         AttackCd = 0;
     }
@@ -21,7 +22,12 @@ public class EnemyDrone : Enemy
     private void FixedUpdate()
     {
         if (IsTakeDamage) return;
+        if (player1 == null)
+        {
+            Idle();
+        }
         ChasePlayer();
+        Flip();
         if (AttackCd > 0)
         {
             AttackCd -= Time.deltaTime;
@@ -31,10 +37,6 @@ public class EnemyDrone : Enemy
             AttackCd = 0;
         }
 
-        if (player1 == null)
-        {
-            Idle();
-        }
     }
 
     private void ChasePlayer()
@@ -58,15 +60,29 @@ public class EnemyDrone : Enemy
 
     }
 
+    public void Flip()
+    {
+        if(player1.transform.position.x - transform.position.x < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if(player1.transform.position.x - transform.position.x > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
+    }
+
     private void Attack()
     {
         AttackCd = AttackCdTemp;
+        anim.SetTrigger("Attack");
         GameObject projectile = Instantiate(BulletProjectile, AttackPos);
         projectile.transform.parent = null;
         EnemyProjectile enemyProjectile = projectile.GetComponent<EnemyProjectile>();
         Vector2 dir = new Vector2(player1.transform.position.x - transform.position.x, player1.transform.position.y - transform.position.y);
         enemyProjectile.damage = stats.Damage;
-        enemyProjectile.SetDirectionXY(dir.normalized);
+        enemyProjectile.SetDirectionXY(dir.normalized, player1.transform);
         
     }
 
@@ -95,6 +111,7 @@ public class EnemyDrone : Enemy
     {
         GameObject spawn = Instantiate(Gun, transform);
         spawn.transform.parent = null;
+        spawn.transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     private void OnDrawGizmosSelected()

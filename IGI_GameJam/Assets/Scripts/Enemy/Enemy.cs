@@ -52,6 +52,8 @@ public class Enemy : MonoBehaviour
     public virtual IEnumerator TakeDamageKnockBack(int damage, Transform transformPlayer)
     {
         Hp -= damage;
+        if(Hp > 0)
+        {
         IsTakeDamage = true;
         Vector2 dir = new Vector2(transformPlayer.position.x - transform.position.x, transformPlayer.position.y - transform.position.y);
         rb.AddForce(-(dir.normalized) * 3.5f, ForceMode2D.Impulse);
@@ -59,10 +61,15 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(TimeKnockBack);
         rb.velocity = Vector2.zero;
         IsTakeDamage = false;
+        }
+
     }
 
     public virtual void Dead()
     {
+        DetectorSpawn detectorSpawn = GetComponentInParent<DetectorSpawn>();
+        detectorSpawn.ChildrenDead();
+
         CurrencyManager.instance.AddCurrency(Currency);
         GameManager.instance.AddScore(Point);
         int random = Mathf.RoundToInt(Random.Range(0,101));
@@ -77,6 +84,7 @@ public class Enemy : MonoBehaviour
     {
       GameObject spawn = Instantiate(Capsule, transform);
       spawn.transform.parent = null;
+        spawn.transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
 }

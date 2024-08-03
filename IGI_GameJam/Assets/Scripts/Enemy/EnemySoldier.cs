@@ -11,16 +11,25 @@ public class EnemySoldier : Enemy
     public float AttackCd;
     float AttackCdTemp;
     Player player1;
+    Animator anim;
     private void Start()
     {
+        anim = GetComponent<Animator>();
         player1 = FindObjectOfType<Player>().GetComponent<Player>();
         AttackCdTemp = AttackCd;
         AttackCd = 0;
     }
     private void FixedUpdate()
     {
+
         if (IsTakeDamage) return;
+        if (player1 == null)
+        {
+            Idle();
+            return;
+        }
         ChasePlayer();
+        Flip();
         if (AttackCd > 0)
         {
             AttackCd -= Time.deltaTime;
@@ -30,15 +39,12 @@ public class EnemySoldier : Enemy
             AttackCd = 0;
         }
 
-        if (player1 == null)
-        {
-            Idle();
-        }
+
     }
 
     private void Idle()
     {
-        
+        anim.SetBool("IsWalk", false);
     }
 
     private void ChasePlayer()
@@ -53,7 +59,20 @@ public class EnemySoldier : Enemy
         }
         else
         {
+            anim.SetBool("IsWalk", true);
             transform.position = Vector2.MoveTowards(transform.position, player1.transform.position, speed * Time.deltaTime);
+        }
+
+    }
+    public void Flip()
+    {
+        if (player1.transform.position.x - transform.position.x > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (player1.transform.position.x - transform.position.x < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
     }

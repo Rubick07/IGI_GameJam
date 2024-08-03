@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 296959263214792225}
   - component: {fileID: 7751158681759119631}
   - component: {fileID: 6273440451181716691}
+  - component: {fileID: 4742222939956734654}
+  - component: {fileID: 4092605622835943292}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -146,7 +148,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &296959263214792225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +162,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: f8f04fea2cb47a8409393ce754ae8503, type: 2}
-  stance: 1
+  speed: 5
+  combo:
+  - {fileID: 11400000, guid: 06922cc319ccbd947925ab8a180a30d9, type: 2}
+  - {fileID: 11400000, guid: 9dc13e2c671a37748ac2d067d0d0c800, type: 2}
+  - {fileID: 11400000, guid: dbc1f397ef78f3e40875fffccaa40dce, type: 2}
+  stance: 0
+  InteractRange: 2
+  ItemLayer:
+    serializedVersion: 2
+    m_Bits: 128
   DashCost: 2
   dashingPower: 15
   dashingTime: 0.2
@@ -182,7 +193,10 @@ MonoBehaviour:
   HeadHuntercd: 10
   BurstAmount: 3
   IntervalShoot: 0.3
+  Healthbar: {fileID: 0}
+  EnergyBar: {fileID: 0}
   PauseButton: {fileID: 0}
+  anim: {fileID: 6273440451181716691}
 --- !u!96 &7751158681759119631
 TrailRenderer:
   serializedVersion: 3
@@ -204,7 +218,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -317,3 +331,83 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &4742222939956734654
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391363907531570678}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.296206}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.8333334, y: 3.0555556}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8333334, y: 0.46314335}
+  m_EdgeRadius: 0
+--- !u!70 &4092605622835943292
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391363907531570678}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.8333334, y: 3.0555556}
+  m_Direction: 0
