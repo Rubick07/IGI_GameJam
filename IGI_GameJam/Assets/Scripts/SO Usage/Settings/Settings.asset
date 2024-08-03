@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0cb5d0466c6ed24a86c3e355e1c6f75, type: 3}
-  m_Name: Player Stats
+  m_Script: {fileID: 11500000, guid: 7f468462e7675bc4cbbd6afa701a52dd, type: 3}
+  m_Name: Settings
   m_EditorClassIdentifier: 
-  HP: 5
-  Damage: 1
-  speed: 5
-  AttackRadius: 3
+  MusicSet: 0
+  SFXSet: 1

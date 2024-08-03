@@ -7,6 +7,7 @@ public class Stats : ScriptableObject
 {
     public int HP;
     public int Damage;
+    public int Defense;
     public float speed;
     public float AttackRadius;
 

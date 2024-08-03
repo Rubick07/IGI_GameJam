@@ -1254,6 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa6af1c9da0ac04b8c6480c60894a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 05d591728e2a03a47a7172c1700934b9, type: 2}
   musicSound: []
   sfxSound: []
   musicSource: {fileID: 492623914}
@@ -1830,7 +1831,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Test
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &977992469
@@ -2696,6 +2697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSlider: {fileID: 1833156047}
   _SfxSlider: {fileID: 319737069}
+  settings: {fileID: 11400000, guid: 05d591728e2a03a47a7172c1700934b9, type: 2}
 --- !u!114 &1950946530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2966,6 +2968,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1950946529}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: SaveSettings
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
