@@ -12,6 +12,15 @@ public class Enemy : MonoBehaviour
     public int droprate;
     public int Point = 100;
     public GameObject Capsule;
+    public bool IsTakeDamage;
+    public float TimeKnockBack;
+
+    public Rigidbody2D rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void Awake()
     {
         Hp = stats.HP;
@@ -20,11 +29,15 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+
         if(Hp <= 0)
         {
             Dead();
         }
-
+        if(IsTakeDamage == true)
+        {
+            return;
+        }
     }
     public void TakeDamage(int damage)
     {
@@ -34,6 +47,18 @@ public class Enemy : MonoBehaviour
     public void TakeHeal(int heal)
     {
         Hp += heal;
+    }
+
+    public virtual IEnumerator TakeDamageKnockBack(int damage, Transform transformPlayer)
+    {
+        Hp -= damage;
+        IsTakeDamage = true;
+        Vector2 dir = new Vector2(transformPlayer.position.x - transform.position.x, transformPlayer.position.y - transform.position.y);
+        rb.AddForce(-(dir.normalized) * 3.5f, ForceMode2D.Impulse);
+        Debug.Log(dir.normalized);
+        yield return new WaitForSeconds(TimeKnockBack);
+        rb.velocity = Vector2.zero;
+        IsTakeDamage = false;
     }
 
     public virtual void Dead()

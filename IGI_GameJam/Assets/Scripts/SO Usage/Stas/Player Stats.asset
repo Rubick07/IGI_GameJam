@@ -17,3 +17,5 @@ MonoBehaviour:
   Defense: 0
   speed: 5
   AttackRadius: 3
+  EnergyBar: 100
+  EnergyRegeneration: 1

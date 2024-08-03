@@ -11,4 +11,7 @@ public class Stats : ScriptableObject
     public float speed;
     public float AttackRadius;
 
+    //buat player
+    public int EnergyBar;
+    public int EnergyRegeneration;
 }

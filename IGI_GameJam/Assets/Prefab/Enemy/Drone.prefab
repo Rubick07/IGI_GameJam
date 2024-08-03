@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 7944443355614512533}
   - component: {fileID: 4313258082704745082}
   - component: {fileID: 5203718682838026028}
+  - component: {fileID: 594164563761249621}
   m_Layer: 3
   m_Name: Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2593421030026778120
 Transform:
   m_ObjectHideFlags: 0
@@ -143,7 +144,37 @@ MonoBehaviour:
   droprate: 5
   Point: 100
   Capsule: {fileID: 3228957520340696146, guid: a8ea71875740e884d91dd39c24c3b27b, type: 3}
+  IsTakeDamage: 0
+  TimeKnockBack: 0
+  rb: {fileID: 594164563761249621}
   AttackPos: {fileID: 2593421030026778120}
   BulletProjectile: {fileID: 880764253048556462, guid: 1171776e6b8d95747852d3d5fb98ae32, type: 3}
   AttackCd: 5
   Gun: {fileID: 289003487552195929, guid: acc602bba6ec87e40942d1414c4eb518, type: 3}
+--- !u!50 &594164563761249621
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300436226541986677}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

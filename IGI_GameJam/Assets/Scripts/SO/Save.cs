@@ -19,7 +19,7 @@ public class Save : ScriptableObject
     {
         ManagerData data = SaveSystem.LoadManager();
         Currency = data.Currency;
-        Score = data.Currency;
+        Score = data.Score;
         Attempt = data.Attempt;
         Time = data.Time;
         

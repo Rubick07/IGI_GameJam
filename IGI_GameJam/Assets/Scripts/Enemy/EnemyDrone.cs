@@ -20,6 +20,7 @@ public class EnemyDrone : Enemy
 
     private void FixedUpdate()
     {
+        if (IsTakeDamage) return;
         ChasePlayer();
         if (AttackCd > 0)
         {
@@ -38,7 +39,7 @@ public class EnemyDrone : Enemy
 
     private void ChasePlayer()
     {
-        if (Vector2.Distance(transform.position, player1.transform.position) <= stats.AttackRadius / 2)
+        if (Vector2.Distance(transform.position, player1.transform.position) <= stats.AttackRadius / 3)
         {
 
             transform.position = Vector2.MoveTowards(transform.position, -(player1.transform.position) * 1000, speed * Time.deltaTime);
@@ -99,6 +100,6 @@ public class EnemyDrone : Enemy
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(AttackPos.position, stats.AttackRadius);
-        Gizmos.DrawWireSphere(AttackPos.position, stats.AttackRadius/2);
+        Gizmos.DrawWireSphere(AttackPos.position, stats.AttackRadius/3);
     }
 }

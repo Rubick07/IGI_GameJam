@@ -16,4 +16,4 @@ MonoBehaviour:
   Damage: 4
   Defense: 0
   speed: 4
-  AttackRadius: 8
+  AttackRadius: 10

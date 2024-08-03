@@ -10,11 +10,17 @@ public class Player : MonoBehaviour
     [SerializeField] private Stats stats;
     private Secondary SecondaryWeapon;
     private int Hp;
-    private float speed;
+    private int damage;
+    public float speed;
     private int Defense;
     Vector2 movement;
     Rigidbody2D rb;
 
+    [Header("Attack Combo")]
+    public List<AttackSO> combo;
+    float lastClickedTime;
+    float lastComboEnd;
+    int comboCounter;
 
     public enum Stance {Melee, range}
     public Stance stance;
@@ -64,20 +70,25 @@ public class Player : MonoBehaviour
     //Energy
     private int Energy = 0;
     private int MaxEnergy = 100;
-
+    private int EnergyRegen;
+    [Header("bar SetUp")]
+    [SerializeField] Bar Healthbar;
+    [SerializeField] Bar EnergyBar;
     [Header("Pause SetUp")]
     [SerializeField] Button PauseButton;
     [Header("Animator SetUp")]
     [SerializeField]Animator anim;
-    private void Awake()
-    {
-        Hp = stats.HP;
-        speed = stats.speed;
-        Defense = stats.Defense;
-    }
 
     private void Start()
     {
+        Hp = stats.HP;
+        Defense = stats.Defense;
+        MaxEnergy = stats.EnergyBar;
+        EnergyRegen = stats.EnergyRegeneration;
+
+        Healthbar.SetMax(stats.HP);
+        EnergyBar.SetMax(stats.EnergyBar);
+
         rb = GetComponent<Rigidbody2D>();
         trail = GetComponent<TrailRenderer>();
         HeadHuntercdTemp = HeadHuntercd;
@@ -280,15 +291,9 @@ public class Player : MonoBehaviour
     {
         if(stance == Stance.Melee)
         {
-            Debug.Log("Attack");
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(AttackPos.position, stats.AttackRadius, Enemylayer);
-
-            foreach(Collider2D enemy in enemies)
-            {
-                Enemy enemy1 = enemy.GetComponent<Enemy>();
-                enemy1.TakeDamage(stats.Damage);
-            }
+            ComboAttack();
         }
+        
         else if(stance == Stance.range)
         {
             IsShooting = true;
@@ -296,7 +301,90 @@ public class Player : MonoBehaviour
             StartCoroutine(Shoot());            
             
         }
+        ExitAttack();
     }
+
+    public void ComboAttack()
+    {
+        if (Time.time - lastComboEnd > 0.5f && comboCounter <= combo.Count)
+        {
+            //buat Bisa Jalanin combo, yang end dimatiin
+            CancelInvoke("EndCombo");
+
+            if (Time.time - lastClickedTime >= 0.2f)
+            {
+
+                //Jalanin Animasi dalam List
+                anim.runtimeAnimatorController = combo[comboCounter].animatorOV;
+                anim.Play("Attack", 0, 0);
+                damage = combo[comboCounter].damage;
+       
+                //Tambahin ComboCounter buat Index list
+                comboCounter++;
+
+                //Update LastClicked buat ngecek terakhir ditekan
+                lastClickedTime = Time.time;
+
+
+                //Buat balikin gerakin terakhir balik ke awal
+                if (comboCounter >= combo.Count)
+                {
+                    comboCounter = 0;
+                }
+
+
+            }
+
+
+        }
+    }
+
+    void ExitAttack()
+    {
+        //buat gk lanjutin combo
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            //Debug.Log("Bekantan");
+            Invoke("EndCombo", 1);
+
+        }
+    }
+
+    void EndCombo()
+    {
+        //Reset Index Combo dalam list
+        comboCounter = 0;
+        //Simpen waktu terakhir kali ngecombo
+        lastComboEnd = Time.time;
+    }
+
+    public void DamageEnemy()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(AttackPos.position, combo[comboCounter].range, Enemylayer);
+        
+        foreach(Collider2D enemy in enemies)
+        {
+          Enemy enemy1 = enemy.GetComponent<Enemy>();
+          enemy1.TakeDamage(combo[comboCounter].damage);
+            
+        }
+    }
+
+    public void DamageKnockBackEnemy()
+    {
+        speed = 0;
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(AttackPos.position, combo[comboCounter].range, Enemylayer);
+
+        foreach (Collider2D enemy in enemies)
+        {
+            Enemy enemy1 = enemy.GetComponent<Enemy>();
+            Debug.Log(enemy1);
+            StartCoroutine(enemy1.TakeDamageKnockBack(combo[comboCounter].damage, transform));
+
+        }
+        
+    }
+
     private IEnumerator Dash()
     {
         MinusEnergy(DashCost);
@@ -358,17 +446,20 @@ public class Player : MonoBehaviour
         }
     }
 
+
     #endregion
     #region PlayerHealth
 
     public void TakeDamage(int damage)
     {
         Hp -= damage;
+        Healthbar.SetValue(Hp);
     }
 
     public void TakeHeal(int heal)
     {
         Hp += heal;
+        Healthbar.SetValue(Hp);
     }
 
     public void Dead()
@@ -381,18 +472,20 @@ public class Player : MonoBehaviour
     public void AddEnergy(int energy)
     {
         Energy += energy;
+        EnergyBar.SetValue(Energy);
         Energy = Mathf.Clamp(Energy, 0, MaxEnergy);
     }
 
     public void MinusEnergy(int energy)
     {
         Energy -= energy;
+        EnergyBar.SetValue(Energy);
         Energy = Mathf.Clamp(Energy, 0, MaxEnergy);
     }
 
     public void PassiveEnergy()
     {
-        AddEnergy(2);
+        AddEnergy(EnergyRegen);
     }
 
     public bool CheckEnergy(int banyak)
@@ -415,9 +508,9 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        Gizmos.DrawWireSphere(AttackPos.position, stats.AttackRadius);
-        Gizmos.DrawWireSphere(AttackPos.position, UltimateRange);
-        Gizmos.DrawWireSphere(transform.position, InteractRange);
+        Gizmos.DrawWireSphere(AttackPos.position, combo[2].range);
+        //Gizmos.DrawWireSphere(AttackPos.position, UltimateRange);
+        //Gizmos.DrawWireSphere(transform.position, InteractRange);
     }
 
 }

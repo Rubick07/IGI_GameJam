@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f437517069c3741ad5b485ddc13fab, type: 3}
   m_Name: SaveFile
   m_EditorClassIdentifier: 
-  Currency: 90
+  Currency: 0
   Score: 0
   Attempt: 0
   Time: 0

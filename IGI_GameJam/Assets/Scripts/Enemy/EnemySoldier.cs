@@ -19,6 +19,7 @@ public class EnemySoldier : Enemy
     }
     private void FixedUpdate()
     {
+        if (IsTakeDamage) return;
         ChasePlayer();
         if (AttackCd > 0)
         {
