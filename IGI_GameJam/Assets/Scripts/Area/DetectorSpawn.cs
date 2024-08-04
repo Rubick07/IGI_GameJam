@@ -6,7 +6,7 @@ public class DetectorSpawn : MonoBehaviour
 {
     [SerializeField]SpawnMonster[] spawnMonsters;
     [SerializeField] Collider2D[] Barrier;
-    [SerializeField] SpawnNextLevel nextLevel;
+    [SerializeField] SpawnNextLevel[] nextLevel;
     [SerializeField] bool LastArea;
     int Banyak;
     bool lewat = false;
@@ -53,7 +53,10 @@ public class DetectorSpawn : MonoBehaviour
 
             if (LastArea)
             {
-               nextLevel.SpawnObject();
+                foreach(SpawnNextLevel spawnNextLevel in nextLevel)
+                {
+                    spawnNextLevel.SpawnObject();
+                }
             }
         }
     }

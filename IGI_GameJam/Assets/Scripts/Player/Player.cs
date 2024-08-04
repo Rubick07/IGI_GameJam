@@ -476,13 +476,13 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        stats.HP -= damage;
+        Hp -= damage;
         Healthbar.SetValue(Hp);
     }
 
     public void TakeHeal(int heal)
     {
-        stats.HP += heal;
+        Hp += heal;
         Healthbar.SetValue(Hp);
     }
 
