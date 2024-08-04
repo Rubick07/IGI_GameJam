@@ -18,7 +18,7 @@ public class TownManager : MonoBehaviour
     [SerializeField] Image[] MilitaryLevel;
     [SerializeField] Image[] AgricultureLevel;
     [SerializeField] TMP_Text Description;
-
+    [SerializeField] TMP_Text CurrencyText;
     /*
     [Header("Description Town SetUp")]
     
@@ -35,6 +35,7 @@ public class TownManager : MonoBehaviour
     */
     private void Start()
     {
+        
         townSO.LoadTown();
         //hospital setup
         for(int i = 0; i< townSO.HospitalsLevel; i++)
@@ -61,7 +62,8 @@ public class TownManager : MonoBehaviour
         {
             AgricultureLevel[i].sprite = LevelUp;
         }
-
+        Debug.Log(SaveSo.Currency);
+        CurrencyText.text = SaveSo.Currency.ToString();
 
     }
 
@@ -118,7 +120,7 @@ public class TownManager : MonoBehaviour
                 townSO.SaveTown();
             }
         }
-
+        CurrencyText.text = SaveSo.Currency.ToString();
     }
 
     public void UpgradeResearch()
@@ -153,7 +155,7 @@ public class TownManager : MonoBehaviour
                 townSO.SaveTown();
             }
         }
-
+        CurrencyText.text = SaveSo.Currency.ToString();
     }
 
     public void UpgradeCulinary()
@@ -188,7 +190,7 @@ public class TownManager : MonoBehaviour
                 townSO.SaveTown();
             }
         }
-
+        CurrencyText.text = SaveSo.Currency.ToString();
     }
 
     public void UpgradeMilitary()
@@ -223,6 +225,7 @@ public class TownManager : MonoBehaviour
                 townSO.SaveTown();
             }
         }
+        CurrencyText.text = SaveSo.Currency.ToString();
     }
 
     public void UpgradeAgriCulture()
@@ -257,6 +260,7 @@ public class TownManager : MonoBehaviour
                 townSO.SaveTown();
             }
         }
+        CurrencyText.text = SaveSo.Currency.ToString();
     }
 
     #endregion

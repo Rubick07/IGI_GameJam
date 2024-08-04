@@ -20,6 +20,7 @@ public class CurrencyManager : MonoBehaviour
     }
     private void Start()
     {
+        
         save.LoadManager();
         DontDestroyOnLoad(gameObject);
     }
