@@ -76,6 +76,8 @@ public class Player : MonoBehaviour
     [SerializeField] Bar EnergyBar;
     [Header("Pause SetUp")]
     [SerializeField] Button PauseButton;
+    [Header("LoseUi")]
+    [SerializeField] private GameObject LoseUI;
     [Header("Animator SetUp")]
     [SerializeField]Animator anim;
 
@@ -374,7 +376,11 @@ public class Player : MonoBehaviour
         foreach(Collider2D enemy in enemies)
         {
           Enemy enemy1 = enemy.GetComponent<Enemy>();
-          enemy1.TakeDamage(combo[comboCounter].damage);
+            if(enemy1.Hp > 0)
+            {
+                enemy1.TakeDamage(combo[comboCounter].damage);
+            }
+          
             
         }
     }
@@ -388,7 +394,11 @@ public class Player : MonoBehaviour
         {
             Enemy enemy1 = enemy.GetComponent<Enemy>();
             Debug.Log(enemy1);
-            StartCoroutine(enemy1.TakeDamageKnockBack(combo[comboCounter].damage, transform));
+            if(enemy1.Hp > 0)
+            {
+                StartCoroutine(enemy1.TakeDamageKnockBack(combo[comboCounter].damage, transform));
+            }
+            
 
         }
         
@@ -420,15 +430,20 @@ public class Player : MonoBehaviour
 
     private void ShootBullet(GameObject BulletdiTembak)
     {
-        if(SecondaryWeapon.Ammo == 0)
+        if(stance == Stance.range)
         {
-            stance = Stance.Melee;
-            return;
+            if (SecondaryWeapon.Ammo == 0)
+            {
+                stance = Stance.Melee;
+                return;
+            }
+            if(BulletdiTembak == BulletNormal)
+            {
+                SecondaryWeapon.Ammo--;
+            }
         }
-        if(BulletdiTembak == BulletNormal)
-        {
-            SecondaryWeapon.Ammo--;
-        }
+
+
         GameObject bullet = Instantiate(BulletdiTembak, AttackPos);
         bullet.transform.parent = null;
         Bullet rbbullet = bullet.GetComponent<Bullet>();
@@ -461,19 +476,21 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Hp -= damage;
+        stats.HP -= damage;
         Healthbar.SetValue(Hp);
     }
 
     public void TakeHeal(int heal)
     {
-        Hp += heal;
+        stats.HP += heal;
         Healthbar.SetValue(Hp);
     }
 
     public void Dead()
     {
+        LoseUI.SetActive(true);
         Destroy(gameObject);
+
     }
     #endregion
     #region Energy

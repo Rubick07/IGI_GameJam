@@ -59,14 +59,20 @@ public class Enemy : MonoBehaviour
         rb.AddForce(-(dir.normalized) * 3.5f, ForceMode2D.Impulse);
         Debug.Log(dir.normalized);
         yield return new WaitForSeconds(TimeKnockBack);
+        
         rb.velocity = Vector2.zero;
         IsTakeDamage = false;
+        }
+        else
+        {
+            yield return null;
         }
 
     }
 
     public virtual void Dead()
     {
+        StopAllCoroutines();
         DetectorSpawn detectorSpawn = GetComponentInParent<DetectorSpawn>();
         detectorSpawn.ChildrenDead();
 

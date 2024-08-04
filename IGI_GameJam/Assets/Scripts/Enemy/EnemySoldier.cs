@@ -53,7 +53,7 @@ public class EnemySoldier : Enemy
         {
             if(AttackCd <= 0)
             {
-                Attack();
+                StartCoroutine(Attack());
             }
                           
         }
@@ -77,12 +77,20 @@ public class EnemySoldier : Enemy
 
     }
 
-    private void Attack()
+    private IEnumerator Attack()
     {
-        Debug.Log("Attack");
+        speed = 0;
+        anim.SetBool("IsAttack", true);
         AttackCd = AttackCdTemp;
+        yield return new WaitForSeconds(1f);
+        anim.SetBool("IsAttack", false);
+        speed = stats.speed;
+    }
+
+    public void AttackBeneran()
+    {
         Collider2D collplayer = Physics2D.OverlapCircle(AttackPos.position, stats.AttackRadius, playerLayer);
-        if(collplayer != null)
+        if (collplayer != null)
         {
             Player player = collplayer.gameObject.GetComponent<Player>();
             player.TakeDamage(stats.Damage);

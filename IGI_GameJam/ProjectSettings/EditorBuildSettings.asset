@@ -8,16 +8,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: d72b5edfb6049c246a48422f1e6d687d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Area/Area 1.unity
-    guid: 5ed8cb458c3e4ad409979486b5b5aa1f
+    path: Assets/Scenes/Prologue.unity
+    guid: 06954c5b00b7a504b94c309b15ff7354
   - enabled: 1
     path: Assets/Scenes/Town.unity
     guid: 9bbef5fb19c772e47bb92c34ffdeaa66
   - enabled: 1
+    path: Assets/Scenes/Area/Area 1.unity
+    guid: 5ed8cb458c3e4ad409979486b5b5aa1f
+  - enabled: 1
     path: Assets/Scenes/Area/Area 2.unity
     guid: fdde3b0d613c4e048ad3f876b527d7ee
+  - enabled: 1
+    path: Assets/Scenes/Area/Area 3.unity
+    guid: 4624c545cdc61674d96bac4871a90607
+  - enabled: 1
+    path: Assets/Scenes/Area/Area 4.unity
+    guid: a7a6280275ccb184f898b38d3b88fcb6
+  - enabled: 1
+    path: Assets/Scenes/Area/Area 5.unity
+    guid: 5b3a9e2e21555f143987a6f3dab753f6
   m_configObjects: {}

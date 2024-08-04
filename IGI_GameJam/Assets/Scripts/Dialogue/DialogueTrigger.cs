@@ -8,9 +8,17 @@ using UnityEngine.UI;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue[] dialogue;
+    public bool StartDialogue;
     //public GameObject button;
     int index = 0;
 
+    private void Start()
+    {
+        if (StartDialogue)
+        {
+            Invoke("NewDialogue", 0.1f);
+        }
+    }
 
     public void TriggerDialogue()
     {

@@ -7,6 +7,7 @@ public class TownManager : MonoBehaviour
 {
 
     [SerializeField] TownSO townSO;
+    [SerializeField] Save SaveSo;
     [SerializeField] Stats PlayerSO;
     [SerializeField] AttackSO[] AttackCombo;
     [Header("LevelUp Town SetUp")]
@@ -34,6 +35,7 @@ public class TownManager : MonoBehaviour
     */
     private void Start()
     {
+        townSO.LoadTown();
         //hospital setup
         for(int i = 0; i< townSO.HospitalsLevel; i++)
         {
@@ -63,6 +65,16 @@ public class TownManager : MonoBehaviour
 
     }
 
+    private void OnApplicationQuit()
+    {
+        townSO.SaveTown();
+    }
+
+    public void AttempNambah()
+    {
+        SaveSo.Attempt++;
+    }
+
     #region Description
 
     public void DescriptionTown(string DescriptionTxt)
@@ -82,7 +94,9 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(200);
                 townSO.HospitalsLevel++;
                 HospitalLevel[townSO.HospitalsLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
+            
        }
        else if (townSO.HospitalsLevel == 2)
         {
@@ -91,6 +105,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(400);
                 townSO.HospitalsLevel++;
                 HospitalLevel[townSO.HospitalsLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if (townSO.HospitalsLevel == 3)
@@ -100,6 +115,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(600);
                 townSO.HospitalsLevel++;
                 HospitalLevel[townSO.HospitalsLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
 
@@ -114,6 +130,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(200);
                 townSO.ResearchLevel++;
                 ResearchLevel[townSO.ResearchLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if(townSO.ResearchLevel == 2)
@@ -123,6 +140,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(400);
                 townSO.ResearchLevel++;
                 ResearchLevel[townSO.ResearchLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if(townSO.ResearchLevel == 3)
@@ -132,6 +150,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(600);
                 townSO.ResearchLevel++;
                 ResearchLevel[townSO.ResearchLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
 
@@ -146,6 +165,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(200);
                 townSO.CulinaryLevel++;
                 CulinaryLevel[townSO.CulinaryLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if(townSO.CulinaryLevel == 2)
@@ -155,6 +175,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(400);
                 townSO.CulinaryLevel++;
                 CulinaryLevel[townSO.CulinaryLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if(townSO.CulinaryLevel == 3)
@@ -164,6 +185,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(600);
                 townSO.CulinaryLevel++;
                 CulinaryLevel[townSO.CulinaryLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
 
@@ -178,6 +200,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(200);
                 townSO.MilitaryLevel++;
                 MilitaryLevel[townSO.MilitaryLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if(townSO.MilitaryLevel == 2)
@@ -187,6 +210,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(400);
                 townSO.MilitaryLevel++;
                 MilitaryLevel[townSO.MilitaryLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if(townSO.MilitaryLevel == 3)
@@ -196,6 +220,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(600);
                 townSO.MilitaryLevel++;
                 MilitaryLevel[townSO.MilitaryLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
     }
@@ -209,6 +234,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(200);
                 townSO.AgricultureLevel++;
                 AgricultureLevel[townSO.AgricultureLevel- 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if(townSO.AgricultureLevel == 2)
@@ -218,6 +244,7 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(400);
                 townSO.AgricultureLevel++;
                 AgricultureLevel[townSO.AgricultureLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
         else if(townSO.AgricultureLevel == 3)
@@ -227,12 +254,14 @@ public class TownManager : MonoBehaviour
                 CurrencyManager.instance.MinusCurrency(600);
                 townSO.AgricultureLevel++;
                 AgricultureLevel[townSO.AgricultureLevel - 1].sprite = LevelUp;
+                townSO.SaveTown();
             }
         }
     }
 
     #endregion
 
+    #region SetUpPlayerStat
     public void setPlayer()
     {
         SetPlayerHealth();
@@ -302,4 +331,5 @@ public class TownManager : MonoBehaviour
         else if (townSO.AgricultureLevel == 4) PlayerSO.EnergyRegeneration = 3;
     }
 
+    #endregion
 }

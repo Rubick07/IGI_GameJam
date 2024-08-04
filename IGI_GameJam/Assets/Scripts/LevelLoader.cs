@@ -9,15 +9,14 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitiontime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    public void LoadLevelWithIndex(int indexlevel)
+    {
+        StartCoroutine(LoadLevel(indexlevel));
     }
 
     IEnumerator LoadLevel(int index)

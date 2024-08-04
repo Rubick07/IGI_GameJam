@@ -25,6 +25,7 @@ public class EnemyDrone : Enemy
         if (player1 == null)
         {
             Idle();
+            return;
         }
         ChasePlayer();
         Flip();
@@ -94,6 +95,9 @@ public class EnemyDrone : Enemy
     public override void Dead()
     {
         CurrencyManager.instance.AddCurrency(Currency);
+        DetectorSpawn detectorSpawn = GetComponentInParent<DetectorSpawn>();
+        detectorSpawn.ChildrenDead();
+
         GameManager.instance.AddScore(Point);
         int random = Mathf.RoundToInt(Random.Range(0, 101));
         if (random <= 4 && Capsule != null)

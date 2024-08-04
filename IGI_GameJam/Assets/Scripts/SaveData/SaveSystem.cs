@@ -76,7 +76,37 @@ public static class SaveSystem
 
 
     #region SaveUpgrade
+    public static void SaveTown(TownSO town)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Town.tow";
+        FileStream stream = new FileStream(path, FileMode.Create);
 
+        TownData data = new TownData(town);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static TownData LoadTown()
+    {
+        string path = Application.persistentDataPath + "/Town.tow";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            TownData data = formatter.Deserialize(stream) as TownData;
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Save File not found in" + path);
+            return null;
+        }
+
+    }
     #endregion
 
 

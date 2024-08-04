@@ -109,7 +109,7 @@ public class DialogueManager : MonoBehaviour
 
             index = 0;
             DialogueManager.Instance.TurnOffTxtBox();
-
+            if (NextScene) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
         }
 
