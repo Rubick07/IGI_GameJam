@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("TimeScore", 0f, 1f);
+        AudioManager.Instance.PlayMusic("Battle");
     }
     public void SetHighScore()
     {

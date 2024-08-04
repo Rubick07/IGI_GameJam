@@ -78,6 +78,7 @@ public class EnemyDrone : Enemy
     {
         AttackCd = AttackCdTemp;
         anim.SetTrigger("Attack");
+        AudioManager.Instance.PlaySFX("Drone");
         GameObject projectile = Instantiate(BulletProjectile, AttackPos);
         projectile.transform.parent = null;
         EnemyProjectile enemyProjectile = projectile.GetComponent<EnemyProjectile>();

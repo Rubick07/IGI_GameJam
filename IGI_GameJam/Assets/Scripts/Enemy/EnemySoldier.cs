@@ -79,6 +79,7 @@ public class EnemySoldier : Enemy
 
     private IEnumerator Attack()
     {
+        
         speed = 0;
         anim.SetBool("IsAttack", true);
         AttackCd = AttackCdTemp;
@@ -89,6 +90,7 @@ public class EnemySoldier : Enemy
 
     public void AttackBeneran()
     {
+        AudioManager.Instance.PlaySFX("Robot");
         Collider2D collplayer = Physics2D.OverlapCircle(AttackPos.position, stats.AttackRadius, playerLayer);
         if (collplayer != null)
         {

@@ -78,6 +78,8 @@ public class Player : MonoBehaviour
     [SerializeField] Button PauseButton;
     [Header("LoseUi")]
     [SerializeField] private GameObject LoseUI;
+    [Header("StanceLogo")]
+    [SerializeField] private GameObject Logo;
     [Header("Animator SetUp")]
     [SerializeField]Animator anim;
 
@@ -228,10 +230,12 @@ public class Player : MonoBehaviour
         if(stance == Stance.Melee && SecondaryWeapon != null)
         {
             stance = Stance.range;
+            Logo.SetActive(true);
         }
         else if(stance == Stance.range)
         {
             stance = Stance.Melee;
+            Logo.SetActive(false);
         }
     }
 
@@ -250,6 +254,7 @@ public class Player : MonoBehaviour
     #region SpecialSkill
     public void Ultimate()
     {
+        AudioManager.Instance.PlaySFX("Ultimate");
         Collider2D[] enemies = Physics2D.OverlapCircleAll(AttackPos.position, UltimateRange, Enemylayer);
 
         foreach (Collider2D enemy in enemies)
@@ -290,6 +295,8 @@ public class Player : MonoBehaviour
 
     private void HeadHunter()
     {
+        AudioManager.Instance.PlaySFX("Gun");
+        anim.SetTrigger("Shoot");
         ShootBullet(BulletHeadhunter);
         MinusEnergy(HeadHunterCost);
         CanHeadHunter = false;
@@ -309,8 +316,7 @@ public class Player : MonoBehaviour
         {
             IsShooting = true;
             speed = 0;
-            StartCoroutine(Shoot());            
-            
+            StartCoroutine(Shoot());
         }
         ExitAttack();
     }
@@ -336,12 +342,16 @@ public class Player : MonoBehaviour
                 //Update LastClicked buat ngecek terakhir ditekan
                 lastClickedTime = Time.time;
 
+                if (comboCounter == 0) AudioManager.Instance.PlaySFX("Combo1");
+                else if (comboCounter == 1) AudioManager.Instance.PlaySFX("Combo2");
+                else if (comboCounter == 2) AudioManager.Instance.PlaySFX("Combo3");
+
 
                 //Buat balikin gerakin terakhir balik ke awal
                 if (comboCounter >= combo.Count)
-                {
-                    comboCounter = 0;
-                }
+                            {
+                                comboCounter = 0;
+                            }
 
 
             }
@@ -406,6 +416,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        AudioManager.Instance.PlaySFX("Dash");
         MinusEnergy(DashCost);
         Candash = false;
         dashingCooldownTemp = dashingCooldown;
@@ -421,6 +432,8 @@ public class Player : MonoBehaviour
     {
         for(int i = 0; i < BurstAmount; i++)
         {
+            AudioManager.Instance.PlaySFX("Gun");
+            anim.SetTrigger("Shoot");
             ShootBullet(BulletNormal);
             yield return new WaitForSeconds(IntervalShoot);
         }
@@ -476,6 +489,8 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        AudioManager.Instance.PlaySFX("Damage");
+        anim.SetTrigger("Takedamage");
         Hp -= damage;
         Healthbar.SetValue(Hp);
     }
@@ -488,6 +503,7 @@ public class Player : MonoBehaviour
 
     public void Dead()
     {
+        AudioManager.Instance.PlaySFX("Death");
         LoseUI.SetActive(true);
         Destroy(gameObject);
 

@@ -2681,8 +2681,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Wastelands Deadzone
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: da7adf8154a21f74e8ee7986f4079031, type: 2}
+  m_sharedMaterial: {fileID: -3490981908452345977, guid: da7adf8154a21f74e8ee7986f4079031, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5621,6 +5621,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7893955688360938176, guid: dbb645af025d66442bafa2e96d122e3b, type: 3}
   m_PrefabInstance: {fileID: 1769405320}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1769405322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5145004095208873622, guid: dbb645af025d66442bafa2e96d122e3b, type: 3}
+  m_PrefabInstance: {fileID: 1769405320}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1792981936 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1092243247143886192, guid: dbb645af025d66442bafa2e96d122e3b, type: 3}
@@ -6336,6 +6341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 296959263214792225, guid: 2f28febc838df774a81bac1e234e13a9, type: 3}
+      propertyPath: Logo
+      value: 
+      objectReference: {fileID: 1769405322}
     - target: {fileID: 296959263214792225, guid: 2f28febc838df774a81bac1e234e13a9, type: 3}
       propertyPath: LoseUI
       value: 

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f468462e7675bc4cbbd6afa701a52dd, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  MusicSet: 0
+  MusicSet: 1
   SFXSet: 1

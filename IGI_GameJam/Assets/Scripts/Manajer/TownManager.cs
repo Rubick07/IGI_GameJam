@@ -268,6 +268,7 @@ public class TownManager : MonoBehaviour
     #region SetUpPlayerStat
     public void setPlayer()
     {
+        AudioManager.Instance.PlaySFX("LevelStart");
         SetPlayerHealth();
         SetPlayerAttack();
         SetPlayerDefense();

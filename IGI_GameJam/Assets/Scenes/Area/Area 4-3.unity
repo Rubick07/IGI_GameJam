@@ -918,6 +918,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbb645af025d66442bafa2e96d122e3b, type: 3}
+--- !u!1 &445153945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5145004095208873622, guid: dbb645af025d66442bafa2e96d122e3b, type: 3}
+  m_PrefabInstance: {fileID: 445153944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &504980170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,6 +3796,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 296959263214792225, guid: 2f28febc838df774a81bac1e234e13a9, type: 3}
+      propertyPath: Logo
+      value: 
+      objectReference: {fileID: 445153945}
     - target: {fileID: 296959263214792225, guid: 2f28febc838df774a81bac1e234e13a9, type: 3}
       propertyPath: LoseUI
       value: 
