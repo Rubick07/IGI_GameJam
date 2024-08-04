@@ -8,6 +8,9 @@ public class DetectorSpawn : MonoBehaviour
     [SerializeField] Collider2D[] Barrier;
     [SerializeField] SpawnNextLevel[] nextLevel;
     [SerializeField] bool LastArea;
+    [SerializeField] bool AdaDialogue;
+    [SerializeField] DialogueTrigger dialogueTrigger;
+
     int Banyak;
     bool lewat = false;
     Collider2D barrierini;
@@ -36,6 +39,12 @@ public class DetectorSpawn : MonoBehaviour
             }
             barrierini.enabled = false;
             lewat = true;
+
+            if(spawnMonsters.Length == 0 && AdaDialogue)
+            {
+                dialogueTrigger.NewDialogue();
+            }
+
         }
     }
 
@@ -51,6 +60,11 @@ public class DetectorSpawn : MonoBehaviour
                 spriteRenderer.enabled = false;
             }
 
+            if (AdaDialogue)
+            {
+                dialogueTrigger.NewDialogue();
+            }
+
             if (LastArea)
             {
                 foreach(SpawnNextLevel spawnNextLevel in nextLevel)
@@ -58,6 +72,8 @@ public class DetectorSpawn : MonoBehaviour
                     spawnNextLevel.SpawnObject();
                 }
             }
+
+            
         }
     }
 }

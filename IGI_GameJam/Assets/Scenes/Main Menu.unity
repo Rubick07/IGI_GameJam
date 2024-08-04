@@ -1261,6 +1261,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f4d5a700a53676c4792ea076e7dc05d7, type: 3}
   - Name: MainMenu
     clip: {fileID: 8300000, guid: bf7a9021102c8414194f4b5c7258d54b, type: 3}
+  - Name: Battle
+    clip: {fileID: 8300000, guid: 8485e2d7ea19d724d87777f4d5286c82, type: 3}
   sfxSound: []
   musicSource: {fileID: 492623914}
   sfxSource: {fileID: 417612899}
