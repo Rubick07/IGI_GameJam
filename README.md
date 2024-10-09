@@ -19,13 +19,13 @@ Mirai is a game about Audrey, a young girl setting her sights to achieve a bette
 - Sound BGM: Band Lab
 
 ## How to Play
-Move - W, A, S, D 
-Dash - Left Shift 
-Attack - Left Mouse Button 
-Skill - E 
-Ultimate - Q 
-Interact - F 
-Change Weapon - Right Mouse Button
+- Move - W, A, S, D 
+- Dash - Left Shift 
+- Attack - Left Mouse Button 
+- Skill - E 
+- Ultimate - Q 
+- Interact - F 
+- Change Weapon - Right Mouse Button
 
 ## Installation
 - Download the game from keen-fm itch.io page https://keen-fm.itch.io/mirai
