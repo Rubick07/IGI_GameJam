@@ -12,12 +12,6 @@ Mirai is a game about Audrey, a young girl setting her sights to achieve a bette
 - Shop to Upgrade Player stats
 - Fight a lot enemy with skill and weapon
 
-## Technologies Used
-- Engine: Unity
-- Programming Language: C#
-- Graphic: Photoshop
-- Sound BGM: Band Lab
-
 ## How to Play
 - Move - W, A, S, D 
 - Dash - Left Shift 
@@ -27,16 +21,22 @@ Mirai is a game about Audrey, a young girl setting her sights to achieve a bette
 - Interact - F 
 - Change Weapon - Right Mouse Button
 
+## Tools Used
+- Engine: Unity
+- Programming Language: C#
+- Graphic: Photoshop
+- Sound BGM: Band Lab
+
 ## Installation
 - Download the game from keen-fm itch.io page https://keen-fm.itch.io/mirai
 - Extract files to desired directory
 - Run the game
 
-## Feedback and Bug Reports
-You can rate and comment about the game in the game page. Any feedback is really appreciated.
-- https://keen-fm.itch.io/mirai
-
 ## Contributions
 - Game Programmer: Evan Jonathan
 - Game Designer: Vincent Pho Wijaya
 - Game Artist: Keen Felo Matheus
+
+## Feedback and Bug Reports
+You can rate and comment about the game in the game page. Any feedback is really appreciated.
+- https://keen-fm.itch.io/mirai
