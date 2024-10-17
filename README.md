@@ -1,42 +1,87 @@
-![MiraiBg](https://github.com/user-attachments/assets/b15dd391-c7d3-43f4-8dfb-1aedf4465d5a)
 
-# Mirai
-- Last Updated: Agustus 19, 2024
-- Developed by: Nais Ingfo
+<p align="center">
+  <img width="100%" alt="prostir" src="https://github.com/user-attachments/assets/b15dd391-c7d3-43f4-8dfb-1aedf4465d5a">
+  </br>
+</p>
 
-## Description
-Mirai is a game about Audrey, a young girl setting her sights to achieve a better life in this future and carve her way to tomorrow with her own fists. 
+## 🔴About
+Mirai is a 2D Action Rougelike Sidescroller with pixel based graphics where you venture on a journey to find the city of tomorrow. Set in 2060, in a post apocalyptic world invaded by robots and AI, you play as Audrey, a young girl setting her sights to achieve a better life in this future and carve her way to tomorrow with her own fists.
 
-## Features
-- Fun action 2D Action Rougelike Sidescroller combat
-- Shop to Upgrade Player stats
-- Fight a lot enemy with skill and weapon
+ In her journey, she will face countless foes and traverse through the wastelands each having their own trials. In order to survive, she can pick up various weapons and items dropped from enemies and use it against them. Join Audrey’s journey in finding the city of tomorrow and rebuilding her own city in the process. 
+<br>
 
-## How to Play
-- Move - W, A, S, D 
-- Dash - Left Shift 
-- Attack - Left Mouse Button 
-- Skill - E 
-- Ultimate - Q 
-- Interact - F 
-- Change Weapon - Right Mouse Button
+## 🕹️Download Game
+Itch.io : https://keen-fm.itch.io/mirai
 
-## Tools Used
-- Engine: Unity
-- Programming Language: C#
-- Graphic: Photoshop
-- Sound BGM: Band Lab
+<br>
 
-## Installation
-- Download the game from keen-fm itch.io page https://keen-fm.itch.io/mirai
-- Extract files to desired directory
-- Run the game
+## 📋 Project Info
+This project using Unity 2022.3.21f1
 
-## Contributions
-- Game Programmer: Evan Jonathan
-- Game Designer: Vincent Pho Wijaya
-- Game Artist: Keen Felo Matheus
+| **Role** | **Name** | **Development Time** 
+|:-|:-|:-|
+| Game Programmer | Evan Jonathan | 3 Day |
+| Game Artist | Keen Felo Matheus | 3 Day |
+| Game Designer & Sound | Vincent Pho Wijaya | 3 Day |
 
-## Feedback and Bug Reports
-You can rate and comment about the game in the game page. Any feedback is really appreciated.
-- https://keen-fm.itch.io/mirai
+
+
+<br>
+
+##  📜Scripts and Features
+
+- In this game, we collect player performance data and store it in Google Sheets using Unity Networking WWW by submitting a form.
+- The leaderboard is sorted A-Z and handled by Looker Studio for display on the screen.
+- The Saturation Changer is used to control the environment’s tone and weather effects through color adjustments in the game.
+
+|  Script       | Description                                                  |
+| ------------------- | ------------------------------------------------------------ |
+| `Player.cs` | Manages Player Input, Skill, Ultimate, Energy, Hp|
+| Enemy.cs | Base Script for Enemy for inheritance |
+| `GameManager.cs`  | Manages the game Score |
+| `TownManager.cs`  | Manages the town for upgrades the character stats |
+| `CurrencyManager.cs`  | Manages Player Money for upgrade |
+| `etc`  | |
+
+
+<br>
+
+
+## 📂Files description
+
+```
+├── IGI_Gamejam                     # In this Folder, containing all the Unity project files, to be opened by a Unity Editor
+   ├── Assets                         #  In this Folder, it contains all our code, assets, scenes, etcwas not automatically created by Unity
+      ├── Animation                  # in this folder, it contaions all animation clip and animation Controller
+      ├── Audio                      # In this folder, it contaions all SFX and BGM
+      ├── Gambar                   # In this folder, it contaions all sprites, background, UI image, etc
+      ├── Prefab                   # In this folder, it contaions preafab
+      ├── Scenes                     # In this folder, there are scenes. You can open these scenes to play the game via Unity
+      ├── Scripts                     # In this folder, it contaions all script for the games
+      ├── TextMeshPro                 # In this folder, it contaions plugin for TextMeshPro
+      ├── ....
+   ├── ...
+      
+```
+<br>
+
+## 🕹️Game controls
+
+The following controls are bound in-game, for gameplay and testing.
+
+| Key Binding       | Function          |
+| ----------------- | ----------------- |
+| W,A,S,D           | Standard movement |
+| F             | Interact             |
+| Left Shift             | Dash             |
+| Left Mouse Button              | Attack             |
+| E             | Skill             |
+| Q            | Ultimate            |
+| Right Mouse Button            | Change Weapon           |
+
+
+
+<br>
+
+
+
