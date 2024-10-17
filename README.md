@@ -30,9 +30,8 @@ This project using Unity 2022.3.21f1
 
 ##  📜Scripts and Features
 
-- In this game, we collect player performance data and store it in Google Sheets using Unity Networking WWW by submitting a form.
-- The leaderboard is sorted A-Z and handled by Looker Studio for display on the screen.
-- The Saturation Changer is used to control the environment’s tone and weather effects through color adjustments in the game.
+- In this game, we collect money and Score when enemy dead and we can use money to upgrade player stats at town.
+- Player can change weapon from melee to range.
 
 |  Script       | Description                                                  |
 | ------------------- | ------------------------------------------------------------ |
