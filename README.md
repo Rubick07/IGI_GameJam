@@ -20,9 +20,9 @@ This project using Unity 2022.3.21f1
 
 | **Role** | **Name** | **Development Time** 
 |:-|:-|:-|
-| Game Programmer | Evan Jonathan | 3 Day |
-| Game Artist | Keen Felo Matheus | 3 Day |
-| Game Designer & Sound | Vincent Pho Wijaya | 3 Day |
+| Game Programmer | Evan Jonathan | 5 Day |
+| Game Artist | Keen Felo Matheus | 5 Day |
+| Game Designer & Sound | Vincent Pho Wijaya | 5 Day |
 
 
 
